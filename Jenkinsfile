@@ -5,14 +5,14 @@ pipeline {
     stages {
          stage('Build') {
             steps {
-                // script {
-                //     CHANGED = sh (script: 'y', returnStdout: true).trim()
-                // }
+                script {
+                    CHANGED = sh (script: './y', returnStdout: true).trim()
+                }
 
                 // sh "echo "hello""
                 sh 'echo $(pwd)'
-                sh 'echo $(ls -l)'
-                // println CHANGED
+                // sh 'echo $(ls -l)'
+                println CHANGED
             }
         }
     }
