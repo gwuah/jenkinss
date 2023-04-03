@@ -8,9 +8,9 @@ pipeline {
                 script {
                     changeset = sh (script: './only_hydra', returnStdout: true).trim().split(" ").sort(false).join(" ")
 
-                    onlyMitra = "//mitra/cmd/mitra:base"
-                    onlyHydra = "//hydra/cmd/hydra:base"
-                    onlyHydraAndMitra = "//hydra/cmd/hydra:base //mitra/cmd/mitra:base"
+                    onlyMitra = "//mitra/cmd/mitra:base" == changeset
+                    onlyHydra = "//hydra/cmd/hydra:base" == changeset
+                    onlyHydraAndMitra = "//hydra/cmd/hydra:base //mitra/cmd/mitra:base" == changeset
 
                     if (onlyHydra || onlyMitra || onlyHydraAndMitra) {
                         println("integrations team")
@@ -20,6 +20,11 @@ pipeline {
 
 
                     changeset = sh (script: './only_mitra', returnStdout: true).trim().split(" ").sort(false).join(" ")
+
+                    onlyMitra = "//mitra/cmd/mitra:base" == changeset
+                    onlyHydra = "//hydra/cmd/hydra:base" == changeset
+                    onlyHydraAndMitra = "//hydra/cmd/hydra:base //mitra/cmd/mitra:base" == changeset
+
                     if (onlyHydra || onlyMitra || onlyHydraAndMitra) {
                         println("integrations team")
                     } else {
@@ -27,6 +32,10 @@ pipeline {
                     }
 
                     changeset = sh (script: './only_hydra_mitra', returnStdout: true).trim().split(" ").sort(false).join(" ")
+                    onlyMitra = "//mitra/cmd/mitra:base" == changeset
+                    onlyHydra = "//hydra/cmd/hydra:base" == changeset
+                    onlyHydraAndMitra = "//hydra/cmd/hydra:base //mitra/cmd/mitra:base" == changeset
+
                     if (onlyHydra || onlyMitra || onlyHydraAndMitra) {
                         println("integrations team")
                     } else {
@@ -34,8 +43,10 @@ pipeline {
                     }
 
                     changeset = sh (script: './other', returnStdout: true).trim().split(" ").sort(false).join(" ")
-                    println("----")
-                    println(changeset)
+                    onlyMitra = "//mitra/cmd/mitra:base" == changeset
+                    onlyHydra = "//hydra/cmd/hydra:base" == changeset
+                    onlyHydraAndMitra = "//hydra/cmd/hydra:base //mitra/cmd/mitra:base" == changeset
+
                     if (onlyHydra || onlyMitra || onlyHydraAndMitra) {
                         println("integrations team")
                     } else {
