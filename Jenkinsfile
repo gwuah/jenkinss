@@ -6,13 +6,19 @@ pipeline {
          stage('Build') {
             steps {
                 script {
-                    CHANGED = sh (script: './y', returnStdout: true).trim()
                     String[] projects;
-                    projects = CHANGED.split(" ").sort(false)
-                    
-                    println(projects.size())
+                    changeset = sh (script: './changed_services', returnStdout: true).trim().split(" ").sort(false).join(" ")
 
-                    println projects[0]
+                    onlyMitra = "//mitra/cmd/mitra:base"
+                    onlyHydra = "//hydra/cmd/hydra:base"
+                    onlyHydraAndMitra = "//hydra/cmd/hydra:base //mitra/cmd/mitra:base"
+
+                    if onlyHydra || onlyMitra || onlyHydraAndMitra {
+                        println("integrations team")
+                    } else {
+                        println("other team")
+                    }
+                    
                 }
             }
         }
