@@ -34,6 +34,8 @@ pipeline {
                     }
 
                     changeset = sh (script: './other', returnStdout: true).trim().split(" ").sort(false).join(" ")
+                    println("----")
+                    println(changeset)
                     if (onlyHydra || onlyMitra || onlyHydraAndMitra) {
                         println("integrations team")
                     } else {
