@@ -6,7 +6,7 @@ pipeline {
          stage('Build') {
             steps {
                 script {
-                    changeset = sh (script: './changed_services', returnStdout: true).trim().split(" ").sort(false).join(" ")
+                    changeset = sh (script: './only_hydra', returnStdout: true).trim().split(" ").sort(false).join(" ")
 
                     onlyMitra = '//mitra/cmd/mitra:base' == changeset
                     onlyHydra = '//hydra/cmd/hydra:base' == changeset
