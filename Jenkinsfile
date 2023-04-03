@@ -14,9 +14,9 @@ pipeline {
                 // sh 'echo $(ls -l)'
                 println CHANGED
 
-                split = CHANGED.split(" ")
+                @split = CHANGED.split(" ")
 
-                println split[0]
+                println @split[0]
 
             }
         }
