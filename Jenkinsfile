@@ -8,15 +8,16 @@ pipeline {
                 script {
                     CHANGED = sh (script: './y', returnStdout: true).trim()
                 }
-
                 // sh "echo "hello""
-                sh 'echo $(pwd)'
                 // sh 'echo $(ls -l)'
+                // sh 'echo $(pwd)'
+
                 println CHANGED
 
-                @split = CHANGED.split(" ")
+                String[] projects;
+                projects = CHANGED.split(" ")
 
-                println @split[0]
+                println projects[0]
 
             }
         }
