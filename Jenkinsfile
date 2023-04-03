@@ -13,7 +13,7 @@ pipeline {
                     onlyHydra = "//hydra/cmd/hydra:base"
                     onlyHydraAndMitra = "//hydra/cmd/hydra:base //mitra/cmd/mitra:base"
 
-                    if onlyHydra || onlyMitra || onlyHydraAndMitra {
+                    if (onlyHydra || onlyMitra || onlyHydraAndMitra) {
                         println("integrations team")
                     } else {
                         println("other team")
