@@ -13,6 +13,9 @@ pipeline {
                 sh 'echo $(pwd)'
                 // sh 'echo $(ls -l)'
                 println CHANGED
+
+                println CHANGED[0]
+
             }
         }
     }
